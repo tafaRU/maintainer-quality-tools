@@ -280,6 +280,7 @@ def create_server_conf(data, version):
     if not config.has_section('options'):
         config.add_section('options')
     for key, value in data.items():
+        print("key={} value={}".format(key, value))
         config.set('options', key, value)
     with open(fname_conf, 'w') as configfile:
         config.write(configfile)
