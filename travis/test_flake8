@@ -10,10 +10,11 @@ root_dir = os.path.dirname(os.path.abspath(__file__))
 flake8_config_dir = os.path.join(root_dir, 'cfg')
 folders = (os.environ.get("INCLUDE_LINT", "").split() or
            get_modules(os.path.abspath('.')))
-
+print('folders before:', folders)
 exclude = os.environ.get('EXCLUDE', '').split(',')
+print('exclude:', exclude)
 folders = [folder for folder in folders if folder not in exclude]
-
+print('folders after:', folders)
 status = 0
 
 for addon in folders:

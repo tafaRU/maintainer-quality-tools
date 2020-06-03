@@ -273,11 +273,14 @@ def run_pylint(paths, cfg, beta_msgs=None, sys_paths=None, extra_params=None):
     cmd = ['--rcfile=' + cfg]
     cmd.extend(extra_params)
     subpaths = get_subpaths(paths)
+    print('supbaths before:', subpaths)
     if not subpaths:
         raise UserWarning("Python modules not found in paths %s" % (paths))
     exclude = os.environ.get('EXCLUDE', '').split(',')
+    print('exclude:', exclude)
     subpaths = [path for path in subpaths
                 if os.path.basename(path) not in exclude]
+    print('supbaths after:', subpaths)
     if not subpaths:
         return {'error': 0}
     cmd.extend(subpaths)
